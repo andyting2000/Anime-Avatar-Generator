@@ -4,6 +4,7 @@ from PIL import Image
 import numpy as np
 import cv2
 from model import Generator
+import os
 
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -14,9 +15,8 @@ model.load_state_dict(torch.load(
 model.to(device)
 model.eval()
 
-face_cascade = cv2.CascadeClassifier(
-    cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
-
+cascade_xml_path = "haarcascade_frontalface_default.xml"
+face_cascade = cv2.CascadeClassifier(cascade_xml_path)
 
 def preprocess_image(image, use_face_detection=True):
     img = np.array(image)
