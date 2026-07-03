@@ -6,7 +6,6 @@ import cv2
 from model import Generator
 import os
 
-
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 model = Generator()
