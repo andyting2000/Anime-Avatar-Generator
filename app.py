@@ -173,7 +173,13 @@ label {
 }
 """
 
-with gr.Blocks(elem_id="main-container") as demo:
+force_dark_js = """
+function () {
+    document.body.classList.add('dark');
+}
+"""
+
+with gr.Blocks(js=force_dark_js, elem_id="main-container") as demo:
     with gr.Row(elem_id="header"):
         with gr.Column():
             gr.Markdown("# Anime Avatar Generator")
